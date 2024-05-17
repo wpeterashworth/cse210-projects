@@ -1,9 +1,10 @@
 using System;
 
-class Program
+partial class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Develop02 World!");
+        Journal myJournal = new Journal();
+        myJournal.MenuMethod();
     }
 }
