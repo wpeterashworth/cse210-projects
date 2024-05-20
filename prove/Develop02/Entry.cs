@@ -3,24 +3,24 @@ using System;
 class Entry
 // create the Entry class
 {
-    public string date = "";
-    public string prompt = "";
-    public string text = "";
+    public string _date = "";
+    public string _prompt = "";
+    public string _text = "";
     // provide empty strings to be used later
 
-    public Entry(string date, string prompt, string text)
+    public Entry(string _date, string _prompt, string _text)
     // create the constructor 
     {
-        this.date = date;
-        this.prompt = prompt;
-        this.text = text;
+        this._date = _date;
+        this._prompt = _prompt;
+        this._text = _text;
         // this constructor retrieves the information provided in the Journal class and assigns them in order to have meaning
     }
 
     public void Display()
-    // Display to the console the content of the user's entry, date of entry, and the prompt that was given
+    // Display to the console the content of the user's entry, _date of entry, and the _prompt that was given
     {
-        Console.WriteLine($"{this.prompt} [{date}]\n{this.text}\n");
+        Console.WriteLine($"{this._prompt} [{_date}]\n{this._text}\n");
     }
 
     public void Save()
@@ -31,8 +31,8 @@ class Entry
         string fileContents = File.ReadAllText(fileName);
         // retrieve input from user to find a file and then read all of the contents of that file
 
-        if (!fileContents.Contains(text))
-        // if the file contents do not contain the text the user inputted into the journal, then access the following code
+        if (!fileContents.Contains(_text))
+        // if the file contents do not contain the _text the user inputted into the journal, then access the following code
         {
             if (File.Exists(fileName))
             // if the file that the user gave exists, access the following code
@@ -40,7 +40,7 @@ class Entry
                 using (StreamWriter writer = new StreamWriter(fileName, true)) //this "true" is very important because it tells the streamwriter that the file exists
                 // accessing the file and closing it upon finding it and then using the following code strip
                 {
-                    writer.Write($"{this.prompt} [{this.date}]\n{this.text}\n");
+                    writer.Write($"{this._prompt} [{this._date}]\n{this._text}\n");
                     // write to the file
                 }
             }
@@ -49,7 +49,7 @@ class Entry
             {
                 using (StreamWriter writer = new StreamWriter(fileName))
                 {
-                    writer.Write($"{this.prompt} [{this.date}]\n{this.text}\n");
+                    writer.Write($"{this._prompt} [{this._date}]\n{this._text}\n");
                 }
             }
         }
